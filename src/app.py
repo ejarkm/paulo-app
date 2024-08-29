@@ -31,7 +31,7 @@ for key, page in pages.items():
 
 
 st.set_page_config(
-    page_title="Spaik-Paulo",
+    page_title="Spaik-HER2Predict",
     layout="wide",
     initial_sidebar_state="expanded",
     page_icon=favicon,
