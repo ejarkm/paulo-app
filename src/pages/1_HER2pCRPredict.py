@@ -40,66 +40,61 @@ with st.expander("Calculator", expanded=True):
 
     value_age_diagnosis = st.number_input(
         "**Age at diagnosis**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=0,
+        max_value=130,
+        value=0,
+        step=1,
     )
     value_tumor_size = st.number_input(
         "**Tumor size**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=1,
+        max_value=4,
+        value=1,
+        step=1,
     )
 
 
     value_nodal_disease = st.number_input(
         "**Nodal staging**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=0,
+        max_value=3,
+        value=0,
+        step=1,
     )
+
 
 
     value_strogen_perc = st.number_input(
         "**Estrogen receptor expression %**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=0,
+        max_value=100,
+        value=0,
+        step=1,
     )
 
     value_progest_perc = st.number_input(
         "**Progesteron  receptor expression %**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=0,
+        max_value=100,
+        value=0,
+        step=1,
     )
 
     value_grade = st.number_input(
         "**Grade**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=1,
+        max_value=3,
+        value=1,
+        step=1,
     )
+
 
     value_ki67 = st.number_input(
         "**Ki67 %**",
-        min_value=0.0,
-        max_value=100.0,
-        value=0.0,
-        step=0.0001,
-        format="%.4f",
+        min_value=0,
+        max_value=100,
+        value=0,
+        step=1,
     )
     
     model = load(
@@ -115,10 +110,16 @@ if st.button("Start"):
             This is allowed, but make sure to check it is valid."""
         )
 
+
+    # 1 is the correct label, check the predict_proba
+    # On the dataset the values are:
+    pcr_yes = 1
+    pcr_no = 0
+
     st.markdown("")
     st.markdown(
         f"""The probability of **pCR** is:
     <br/>
-    <font size="6"> {model.predict_proba([input_values])[0][0]*100:.2f}% </font>""",
+    <font size="6"> {model.predict_proba([input_values])[0][1]*100:.2f}% </font>""",
         unsafe_allow_html=True,
     )
