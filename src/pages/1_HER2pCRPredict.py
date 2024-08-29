@@ -46,7 +46,7 @@ with st.expander("Calculator", expanded=True):
         step=1,
     )
     value_tumor_size = st.number_input(
-        "**Tumor size**",
+        "**Tumor size (cT)**",
         min_value=1,
         max_value=4,
         value=1,
@@ -55,7 +55,7 @@ with st.expander("Calculator", expanded=True):
 
 
     value_nodal_disease = st.number_input(
-        "**Nodal staging**",
+        "**Nodal staging (cN)**",
         min_value=0,
         max_value=3,
         value=0,
